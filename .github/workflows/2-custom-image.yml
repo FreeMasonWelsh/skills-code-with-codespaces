@@ -58,8 +58,20 @@ jobs:
       - name: Check devcontainer.json
         uses: skills/action-check-file@v1
         with:
-          file: ".devcontainer/devcontainer.json"
-          search: "mcr\\.microsoft\\.com/vscode/devcontainers/universal:latest"
+         FILE=".github/steps/.devcontainer/devcontainer.json"
+SEARCH="mcr.microsoft.com/vscode/devcontainers/universal:latest"
+
+if [ ! -f "$FILE" ]; then
+  echo "$FILE does not exist"
+  exit 1
+fi
+
+if ! grep -q "$SEARCH" "$FILE"; then
+  echo "Missing $SEARCH in $FILE"
+  echo "----------------"
+  echo "$(cat $FILE)"
+  exit 204
+fi
 
       # In README.md, switch step 2 for step 3.
       - name: Update to step 3
