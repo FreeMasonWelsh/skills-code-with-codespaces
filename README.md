@@ -66,9 +66,9 @@ To begin developing using GitHub Codespaces, you can create a codespace from a t
    > **Note**: The file should autosave.
 1. Use the VS Code terminal to commit the file change by entering the following commit message:
 
-   ```shell
+  ` ```shell
    git commit -a -m "Adding hello from the codespace!"
-   ```
+   ````
 
 1. Push the changes back to your repository. From the VS Code terminal, enter:
 
